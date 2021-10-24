@@ -1,0 +1,42 @@
+.CityWeatherBox {
+    width: 380px;
+    height: 181px;
+    font-family: 'Roboto';
+    color: white;
+    background-color: aquamarine;
+    border-radius: 5px;
+    margin:10px;
+}
+.CityWeatherBox h2 {
+    font-size: 63px;
+    position: relative;
+    display: inline-block;
+    right: -125px;
+    top: 31px;
+    margin: 0;
+    width: 90px;
+}
+.CityWeatherBox h2::after {
+content: "\00b0";
+}
+.CityWeatherBox h3 {
+font-size: 20px;
+text-transform: uppercase;
+position: relative;
+    display: inline-block;
+    text-align: center;
+    right: -20px;
+    top: 56px;
+    margin: 0;
+    width: 115px;
+}
+.CityWeatherBox.cold {
+    background-color: #2D9BF0;
+    
+}
+.CityWeatherBox.temperate {
+    background-color:#FAC710;
+}
+.CityWeatherBox.hot {
+    background-color: #F24726   ;
+}
