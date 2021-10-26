@@ -1,16 +1,25 @@
 
 .App {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 100px;
+  width: 100vw;
+  height: 100vh;
+}
+.container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
-.headerContainer {
-
-  flex-direction: row;
   justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
 }
 h1{align-self: center;
   font-family: RobotoBold;
   font-size:32px;
+}
+.logo{
+  width: 131px;
+  height: 41px;
+  filter: brightness(0) saturate(100%);
 }

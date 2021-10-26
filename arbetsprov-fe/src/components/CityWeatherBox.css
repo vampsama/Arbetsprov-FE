@@ -1,42 +1,52 @@
 .CityWeatherBox {
-    width: 380px;
-    height: 181px;
-    font-family: 'Roboto';
-    color: white;
-    background-color: aquamarine;
-    border-radius: 5px;
-    margin:10px;
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  width: 380px;
+  height: 180px;
+  font-family: "Roboto";
+  color: white;
+  border-radius: 5px;
+  margin: 15px;
 }
-.CityWeatherBox h2 {
-    font-size: 63px;
-    position: relative;
-    display: inline-block;
-    right: -125px;
-    top: 31px;
-    margin: 0;
-    width: 90px;
+
+.CityWeatherBox .weatherData {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
-.CityWeatherBox h2::after {
-content: "\00b0";
+.CityWeatherBox .weatherText {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
-.CityWeatherBox h3 {
-font-size: 20px;
-text-transform: uppercase;
-position: relative;
-    display: inline-block;
-    text-align: center;
-    right: -20px;
-    top: 56px;
-    margin: 0;
-    width: 115px;
+.CityWeatherBox .weatherData h2 {
+  font-size: 63px;
+  margin: 0;
+}
+.CityWeatherBox .weatherData h2::after {
+  content: "\00b0";
+}
+.CityWeatherBox .weatherData h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 0;
+}
+.CityWeatherBox button {
+  border: none;
+  margin-top: 10px;
+  border-radius: 15px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../CloseButton.svg);
+  background-color: white;
 }
 .CityWeatherBox.cold {
-    background-color: #2D9BF0;
-    
+  background-color: #2d9bf0;
 }
 .CityWeatherBox.temperate {
-    background-color:#FAC710;
+  background-color: #fac710;
 }
 .CityWeatherBox.hot {
-    background-color: #F24726   ;
+  background-color: #f24726;
 }

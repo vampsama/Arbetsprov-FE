@@ -1,43 +1,38 @@
-
 .WeatherIcon {
-    height: 80px;
-    width: 80px;
-    background-size: 80px;
-    display: inline-block;
-    position:relative;
-    left: 50px;
-    top: 50px;
+  height: 80px;
+  width: 80px;
+  background-size: 80px;
 }
-.WeatherIcon.cloud-day{
-    background-image: url(../Icons.svg#cloud-day);
+.WeatherIcon.cloud-day {
+  background-image: url(../Icons.svg#cloud-day);
 }
-.WeatherIcon.sun{
-    background-image: url(../Icons.svg#sun);
+.WeatherIcon.sun {
+  background-image: url(../Icons.svg#sun);
 }
-.WeatherIcon.storm{
-    background-image: url(../Icons.svg#storm);
+.WeatherIcon.storm {
+  background-image: url(../Icons.svg#storm);
 }
-.WeatherIcon.hale{
-    background-image: url(../Icons.svg#hale);
+.WeatherIcon.hale {
+  background-image: url(../Icons.svg#hale);
 }
-.WeatherIcon.snow{
-    background-image: url(../Icons.svg#snow);
+.WeatherIcon.snow {
+  background-image: url(../Icons.svg#snow);
 }
-.WeatherIcon.cloud-mixed{
-    background-image: url(../Icons.svg#cloud-mixed);
+.WeatherIcon.cloud-mixed {
+  background-image: url(../Icons.svg#cloud-mixed);
 }
-.WeatherIcon.rain{
-    background-image: url(../Icons.svg#rain);
+.WeatherIcon.rain {
+  background-image: url(../Icons.svg#rain);
 }
-.WeatherIcon.cloud-snow{
-    background-image: url(../Icons.svg#cloud-snow);
+.WeatherIcon.cloud-snow {
+  background-image: url(../Icons.svg#cloud-snow);
 }
-.WeatherIcon.cloud-rain{
-    background-image: url(../Icons.svg#cloud-rain);
+.WeatherIcon.cloud-rain {
+  background-image: url(../Icons.svg#cloud-rain);
 }
-.WeatherIcon.fog{
-    background-image: url(../Icons.svg#fog);
+.WeatherIcon.fog {
+  background-image: url(../Icons.svg#fog);
 }
-.WeatherIcon.lightning{
-    background-image: url(../Icons.svg#lightning);
+.WeatherIcon.lightning {
+  background-image: url(../Icons.svg#lightning);
 }

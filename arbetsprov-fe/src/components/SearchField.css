@@ -1,21 +1,23 @@
 .SearchField {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .SearchField .inputContainer{
+    display: flex;
     width: 598px;
-    height: 20px;
     padding: 20px 30px;
     border-radius: 5px;
     background-color: white;
 }
+.SearchField label {
+    flex-grow: 1;
+    font-size: 20px;
+    font-family: RobotoBold;    
+}
 .SearchField input {
     font-size: 20px;
-    width:400px;
-    border:none;
-    margin: 0 5px 0;
+    flex-grow: 1;
+    border: none;
+    width: 86%;
+    margin: 0 2%;
    
 }
 .SearchField button {
@@ -27,10 +29,4 @@
 }
 .SearchField input:focus-visible {
     outline-style: hidden;
-}
-.SearchField label {
-    font-size: 20px;
-    font-family: RobotoBold;    
-    width: 100%;
-    display: inline-block;
 }

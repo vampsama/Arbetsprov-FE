@@ -1,5 +1,5 @@
 export type CityWeatherData = {
-  cityName?: string;
+  name?: string;
   temperature: number;
   weatherCode: number;
   precip: number;
