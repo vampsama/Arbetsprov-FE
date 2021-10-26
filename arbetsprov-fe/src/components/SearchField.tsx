@@ -7,7 +7,7 @@ const SearchField = (props: any) => {
   const [city, setCity] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  async function addCity(event: any) {
+  const addCity = async (event: any) => {
     event.preventDefault();
     if (city.length > 0) {
       const newCityData = await requestCity();
@@ -21,9 +21,9 @@ const SearchField = (props: any) => {
         setErrorMessage("Det finns ingen stad som matchar din sökning");
       }
     }
-  }
+  };
 
-  async function requestCity(): Promise<CityWeatherData> {
+  const requestCity = async (): Promise<CityWeatherData> => {
     const res = await fetch(
       `http://api.weatherstack.com/current?access_key=${ACCESS_KEY}&query=${city}`
     );
@@ -39,7 +39,7 @@ const SearchField = (props: any) => {
       weatherCode: json.current.weather_code,
     };
     return newCityData;
-  }
+  };
   return (
     <div className="SearchField container">
       <form onSubmit={addCity}>

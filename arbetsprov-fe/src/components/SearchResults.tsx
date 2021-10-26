@@ -1,10 +1,10 @@
-import React from "react";
+import React, { ReactComponentElement } from "react";
 import CityWeatherBox from "./CityWeatherBox";
 import { CityWeatherData } from "./CityWeatherData";
 import "./SearchResults.css";
 
 const SearchResults = (props: any) => {
-  const deleteCity = (index: number) => {
+  const deleteCity = (index: number): void => {
     console.log(index);
     props.deleteCity(index);
   };

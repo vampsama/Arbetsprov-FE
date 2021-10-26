@@ -1,13 +1,13 @@
 import React from "react";
 import "./WeatherIcon.css";
 
-function WeatherIcon(props: any) {
+const WeatherIcon = (props: any) => {
   return (
     <div className={`WeatherIcon ${getWeatherClass(props.weatherCode)}`}></div>
   );
-}
+};
 
-function getWeatherClass(weatherCode: number): string {
+const getWeatherClass = (weatherCode: number): string => {
   let weatherClass = "";
   switch (weatherCode) {
     case 395:
@@ -156,5 +156,5 @@ function getWeatherClass(weatherCode: number): string {
       break; // Clear/Sunny	wsymbol_0001_sunny	wsymbol_0008_clear_sky_night
   }
   return weatherClass;
-}
+};
 export default WeatherIcon;

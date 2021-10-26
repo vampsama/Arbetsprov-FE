@@ -6,7 +6,7 @@ import SearchField from "./SearchField";
 import SearchResults from "./SearchResults";
 import logo from "../isotop_logo_white.svg";
 
-function App() {
+const App = () => {
   const [cities, setCities] = useState<CityWeatherData[]>([
     { name: "Stockholm", precip: 0, temperature: 7, weatherCode: 113 },
     { name: "Oslo", precip: 0, temperature: 8, weatherCode: 113 },
@@ -18,8 +18,6 @@ function App() {
     let newCities = cities.slice();
     newCities.splice(index, 1);
     setCities(newCities);
-    console.log(cities);
-    console.log(newCities);
   };
   const addCity = (newCityData: CityWeatherData) => {
     const newCities = [...cities, newCityData].sort(
@@ -41,6 +39,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
