@@ -10,7 +10,7 @@ const App = () => {
   const [cities, setCities] = useState<CityWeatherData[]>([
     { name: "Stockholm", precip: 0, temperature: 7, weatherCode: 113 },
     { name: "Oslo", precip: 0, temperature: 8, weatherCode: 113 },
-    { name: "Paris", precip: 0, temperature: 20, weatherCode: 113 },
+    { name: "Paris", precip: 1, temperature: 20, weatherCode: 113 },
     { name: "Solen", precip: 0, temperature: 100, weatherCode: 113 },
   ]);
 
