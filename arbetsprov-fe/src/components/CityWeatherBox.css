@@ -38,7 +38,7 @@
   border-radius: 15px;
   width: 30px;
   height: 30px;
-  background-image: url(../CloseButton.svg);
+  background-image: url(../images/CloseButton.svg);
   background-color: white;
 }
 .CityWeatherBox.cold {

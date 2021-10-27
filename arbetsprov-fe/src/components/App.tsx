@@ -4,18 +4,18 @@ import "./App.css";
 import { CityWeatherData } from "./CityWeatherData";
 import SearchField from "./SearchField";
 import SearchResults from "./SearchResults";
-import logo from "../isotop_logo_white.svg";
+import logo from "../images/isotop_logo_white.svg";
 
 const App = () => {
   const [cities, setCities] = useState<CityWeatherData[]>([
-    { name: "Stockholm", precip: 0, temperature: 7, weatherCode: 113 },
-    { name: "Oslo", precip: 0, temperature: 8, weatherCode: 113 },
-    { name: "Paris", precip: 1, temperature: 20, weatherCode: 113 },
     { name: "Solen", precip: 0, temperature: 100, weatherCode: 113 },
+    { name: "Paris", precip: 1, temperature: 20, weatherCode: 113 },
+    { name: "Oslo", precip: 0, temperature: 8, weatherCode: 113 },
+    { name: "Stockholm", precip: 0, temperature: 7, weatherCode: 113 },
   ]);
 
   const deleteCity = (index: number) => {
-    let newCities = cities.slice();
+    let newCities = [...cities];
     newCities.splice(index, 1);
     setCities(newCities);
   };
