@@ -6,7 +6,6 @@
   font-family: "Roboto";
   color: white;
   border-radius: 5px;
-  margin: 15px;
 }
 
 .CityWeatherBox .weatherData {
@@ -49,4 +48,16 @@
 }
 .CityWeatherBox.hot {
   background-color: #f24726;
+}
+@media only screen and (max-width: 1199px) {
+  .CityWeatherBox {
+    width: 335px;
+    height: 120px;
+  }
+  .CityWeatherBox .weatherData h2 {
+    font-size: 46px;
+  }
+  .CityWeatherBox .weatherData h3 {
+    font-size: 15px;
+  }
 }

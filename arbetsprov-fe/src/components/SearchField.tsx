@@ -44,15 +44,15 @@ const SearchField = (props: any) => {
     <div className="SearchField container">
       <form onSubmit={addCity}>
         <div className="inputContainer">
-          <label htmlFor="city-search">
-            Plats:
-            <input
-              id="city-search"
-              onChange={(e) => setCity(e.target.value)}
-              value={city}
-            />
-          </label>
-          <button></button>
+          <label htmlFor="citySearch">Plats:</label>
+          <input
+            id="citySearch"
+            onChange={(e) => setCity(e.target.value)}
+            value={city}
+          />
+          <div className="buttonContainer">
+            <button></button>
+          </div>
         </div>
         <p>{errorMessage}</p>
       </form>

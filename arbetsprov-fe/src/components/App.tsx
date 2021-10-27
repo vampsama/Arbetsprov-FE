@@ -27,7 +27,7 @@ const App = () => {
   };
   return (
     <div className="App">
-      <div className="container ">
+      <div className="mainContainer container ">
         <div className="headerContainer">
           <h1>Hur är vädret i...</h1>
         </div>

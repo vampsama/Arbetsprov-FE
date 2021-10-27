@@ -1,9 +1,13 @@
-.SearchResults{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-
-    padding: 0;
-    margin: 0;
-
+.SearchResults {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (max-width: 1199px) {
+  .SearchResults {
+    grid-template-columns: 1fr;
+  }
 }

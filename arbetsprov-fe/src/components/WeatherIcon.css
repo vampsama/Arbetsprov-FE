@@ -3,6 +3,14 @@
   width: 80px;
   background-size: 80px;
 }
+@media only screen and (max-width: 1199px) {
+  .WeatherIcon {
+    height: 60px;
+    width: 60px;
+    background-size: 60px;
+  }
+}
+
 .WeatherIcon.cloud-day {
   background-image: url(./weather_icons.svg#cloud-day);
 }
