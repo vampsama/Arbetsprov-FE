@@ -5,39 +5,54 @@ import { CityWeatherData } from "./CityWeatherData";
 import SearchField from "./SearchField";
 import SearchResults from "./SearchResults";
 import logo from "../images/isotop_logo_white.svg";
+import { QueryClient, QueryClientProvider, useQueries } from "react-query";
+import fetchCityWeatherData from "./FetchCityWeatherData";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+      refetchOnReconnect: false,
+      cacheTime: 1000 * 60 * 30,
+    },
+  },
+});
 
 const App = () => {
-  const [cities, setCities] = useState<CityWeatherData[]>([
-    { name: "Solen", precip: 0, temperature: 100, weatherCode: 113 },
-    { name: "Paris", precip: 1, temperature: 20, weatherCode: 113 },
-    { name: "Oslo", precip: 0, temperature: 8, weatherCode: 113 },
-    { name: "Stockholm", precip: 0, temperature: 7, weatherCode: 113 },
-  ]);
+  const localStorageCities = localStorage.getItem("cities");
+  const [cities, setCities] = useState<string[]>(
+    localStorageCities ? JSON.parse(localStorageCities) : []
+  );
 
+  useEffect(
+    () => localStorage.setItem("cities", JSON.stringify(cities)),
+    [cities]
+  );
   const deleteCity = (index: number) => {
     let newCities = [...cities];
     newCities.splice(index, 1);
     setCities(newCities);
   };
-  const addCity = (newCityData: CityWeatherData) => {
-    const newCities = [...cities, newCityData].sort(
-      (a, b) => b.temperature - a.temperature
-    );
+  const addCity = (newCity: string) => {
+    const newCities = [...cities, newCity];
     setCities(newCities);
   };
   return (
-    <div className="App">
-      <div className="mainContainer container ">
-        <div className="headerContainer">
-          <h1>Hur är vädret i...</h1>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <div className="mainContainer container ">
+          <div className="headerContainer">
+            <h1>Hur är vädret i...</h1>
+          </div>
+          <SearchField addCity={addCity} />
+          <SearchResults cities={cities} deleteCity={deleteCity} />
         </div>
-        <SearchField addCity={addCity} />
-        <SearchResults cities={cities} deleteCity={deleteCity} />
+        <div className="footerContainer container">
+          <img className="logo" src={logo} />
+        </div>
       </div>
-      <div className="footerContainer container">
-        <img className="logo" src={logo} />
-      </div>
-    </div>
+    </QueryClientProvider>
   );
 };
 

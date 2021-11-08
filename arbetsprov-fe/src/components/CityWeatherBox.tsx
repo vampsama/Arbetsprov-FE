@@ -1,6 +1,8 @@
 import React from "react";
+import { useQuery } from "react-query";
 import "./CityWeatherBox.css";
 import { CityWeatherData } from "./CityWeatherData";
+import fetchCityWeatherData from "./FetchCityWeatherData";
 import WeatherIcon from "./WeatherIcon";
 
 const getTempClass = (temperature: number, precip: number): string => {
@@ -19,19 +21,37 @@ const getTempClass = (temperature: number, precip: number): string => {
 };
 
 const CityWeatherBox = (props: any) => {
-  const styles = { order: props.temperature };
-  const tempClass = getTempClass(props.temperature, props.precip);
+  const cityWeatherDataQuery = useQuery<any, Error>(
+    ["cityWeatherData", props.city],
+    () => fetchCityWeatherData(props.city)
+  );
   const deleteCity = (event: any) => {
     console.log(event.target.value);
     props.deleteCity(event.target.value);
   };
+
+  if (cityWeatherDataQuery.isError) {
+    return <span>Error: {cityWeatherDataQuery.error.message}</span>;
+  }
+  if (cityWeatherDataQuery.isLoading) {
+    return <div className={`CityWeatherBox`}></div>;
+  }
+
+  console.log(cityWeatherDataQuery);
   return (
-    <div className={`CityWeatherBox ${tempClass}`}>
+    <div
+      className={`CityWeatherBox ${getTempClass(
+        cityWeatherDataQuery.data?.current.temperature,
+        cityWeatherDataQuery.data?.current.precip
+      )}`}
+    >
       <div className="weatherData">
-        <WeatherIcon weatherCode={props.weatherCode} />
+        <WeatherIcon
+          weatherCode={cityWeatherDataQuery.data?.current.weather_code}
+        />
         <div className="weatherText">
-          <h2>{props.temperature}</h2>
-          <h3>{props.name} </h3>
+          <h2>{cityWeatherDataQuery.data?.current.temperature}</h2>
+          <h3>{cityWeatherDataQuery.data?.location.name} </h3>
         </div>
       </div>
       <button value={props.index} onClick={deleteCity}></button>

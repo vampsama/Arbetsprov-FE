@@ -10,15 +10,11 @@ const SearchResults = (props: any) => {
   };
   return (
     <div className="SearchResults">
-      {props.cities.map((cityBox: CityWeatherData, index: number) => (
+      {props.cities.map((cityBox: string, index: number) => (
         <CityWeatherBox
+          city={cityBox}
           key={index}
           index={index}
-          weatherCode={cityBox.weatherCode}
-          tempClass={cityBox.tempClass}
-          name={cityBox.name}
-          temperature={cityBox.temperature}
-          precip={cityBox.precip}
           deleteCity={deleteCity}
         />
       ))}
