@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
-import { CityWeatherData } from "./CityWeatherData";
 import SearchField from "./SearchField";
 import SearchResults from "./SearchResults";
 import logo from "../images/isotop_logo_white.svg";
 import { QueryClient, QueryClientProvider, useQueries } from "react-query";
-import fetchCityWeatherData from "./FetchCityWeatherData";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,6 +13,7 @@ const queryClient = new QueryClient({
       retry: false,
       refetchOnReconnect: false,
       cacheTime: 1000 * 60 * 30,
+      staleTime: 1000 * 60 * 30,
     },
   },
 });

@@ -1,35 +1,46 @@
-Isotop Arbetsprov
-===============================
-Forka detta projekt och bygg en app i React där man kan skriva in namnet på en stad och som visar vilket väder det är där.
-Sidan ska vara responsiv och se bra ut i alla storlekar (mobil till desktop).
+# Getting Started with Create React App
 
-Resultaten av sökningarna ska sparas och man ska även kunna ta bort dom.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Detaljer
-*	Om temperaturen är 20 grader och uppåt ska kortet vara rött
-* Om temperaturen är mellan 1 och 19 grader ska kortet vara gult
-* Om temperaturen är 0 grader och nedåt ska kortet vara blått
-* Om det regnar ska kortet vara blått oavsett temperatur
-* Om staden du söker på inte ger något svar från API:et ska meddelandet "Det finns ingen stad som matchar din sökning" visas under input-fältet
-* Hitta en ikon i Figma-dokumentet som matchar resultatet av sökningen. Använd ×-ikonen som fallback.
-* De sparade resultaten ska sorteras efter temperatur
-* I desktopversionen ska korten stackas i rader om 3
-* Appen ska fungera och se likadan ut i Chrome, Firefox, Edge och Safari.
-* Använd TypeScript om du vill (ej ett krav)
+## Available Scripts
 
-## Design
-I Figma kan du exportera ikoner och liknande som SVG.
-* [Designdokument](https://www.figma.com/file/iDOGMdsvp7WAR0g5spLcno/Arbetsprov?node-id=1%3A675)
+In the project directory, you can run:
 
-## Resurser:
-* Väder-API - https://weatherstack.com/
-* Typsnitt Roboto - https://fonts.google.com/specimen/Roboto
+### `yarn start`
 
-## Vad letar vi efter?
-* Vi vill få en känsla av hur du tar dig an problem och hur du strukturerar din kod
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Redo att skicka in?
-Gör en pull request med din lösning till detta repo och meddela din kontaktperson på Isotop. Vi bokar sedan in ett möte där vi tillsammans går igenom provet med dig.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-![Desktop design](https://raw.githubusercontent.com/isotopsweden/Arbetsprov-FE/main/desktop.png)
-![Mobil design](https://raw.githubusercontent.com/isotopsweden/Arbetsprov-FE/main/mobile.png)
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

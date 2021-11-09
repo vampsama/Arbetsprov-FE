@@ -21,37 +21,31 @@ const getTempClass = (temperature: number, precip: number): string => {
 };
 
 const CityWeatherBox = (props: any) => {
-  const cityWeatherDataQuery = useQuery<any, Error>(
-    ["cityWeatherData", props.city],
-    () => fetchCityWeatherData(props.city)
-  );
   const deleteCity = (event: any) => {
-    console.log(event.target.value);
     props.deleteCity(event.target.value);
   };
 
-  if (cityWeatherDataQuery.isError) {
-    return <span>Error: {cityWeatherDataQuery.error.message}</span>;
+  if (props.cityWeatherDataQuery.isError) {
+    return <span>Error: {props.cityWeatherDataQuery.error.message}</span>;
   }
-  if (cityWeatherDataQuery.isLoading) {
+  if (props.cityWeatherDataQuery.isLoading) {
     return <div className={`CityWeatherBox`}></div>;
   }
 
-  console.log(cityWeatherDataQuery);
   return (
     <div
       className={`CityWeatherBox ${getTempClass(
-        cityWeatherDataQuery.data?.current.temperature,
-        cityWeatherDataQuery.data?.current.precip
+        props.cityWeatherDataQuery.data?.current.temperature,
+        props.cityWeatherDataQuery.data?.current.precip
       )}`}
     >
       <div className="weatherData">
         <WeatherIcon
-          weatherCode={cityWeatherDataQuery.data?.current.weather_code}
+          weatherCode={props.cityWeatherDataQuery.data?.current.weather_code}
         />
         <div className="weatherText">
-          <h2>{cityWeatherDataQuery.data?.current.temperature}</h2>
-          <h3>{cityWeatherDataQuery.data?.location.name} </h3>
+          <h2>{props.cityWeatherDataQuery.data?.current.temperature}</h2>
+          <h3>{props.cityWeatherDataQuery.data?.location.name} </h3>
         </div>
       </div>
       <button value={props.index} onClick={deleteCity}></button>
