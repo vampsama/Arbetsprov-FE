@@ -29,7 +29,7 @@ const SearchField = (props: any) => {
             <button></button>
           </div>
         </div>
-        <p>{errorMessage}</p>
+        <p>{props.error}</p>
       </form>
     </div>
   );
