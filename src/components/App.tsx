@@ -4,26 +4,34 @@ import "./App.css";
 import SearchField from "./SearchField";
 import SearchResults from "./SearchResults";
 import logo from "../images/isotop_logo_white.svg";
-import { QueryClient, QueryClientProvider, useQueries } from "react-query";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: false,
-      refetchOnReconnect: false,
-      cacheTime: 1000 * 60 * 30,
-      staleTime: 1000 * 60 * 30,
-    },
-  },
-});
+import { QueryCache, QueryClient, QueryClientProvider } from "react-query";
 
 const App = () => {
+  const queryClient = new QueryClient({
+    queryCache: new QueryCache({
+      onError: (error: any, query) => {
+        console.log(query.queryKey[1]);
+        const newCities = cities.filter((city) => city != query.queryKey[1]);
+        setCities(newCities);
+        setError(error.message);
+      },
+      onSuccess: () => setError(""),
+    }),
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        retry: false,
+        refetchOnReconnect: false,
+        cacheTime: 1000 * 60 * 30,
+        staleTime: 1000 * 60 * 30,
+      },
+    },
+  });
   const localStorageCities = localStorage.getItem("cities");
   const [cities, setCities] = useState<string[]>(
     localStorageCities ? JSON.parse(localStorageCities) : []
   );
-
+  const [error, setError] = useState("");
   useEffect(
     () => localStorage.setItem("cities", JSON.stringify(cities)),
     [cities]
@@ -44,8 +52,12 @@ const App = () => {
           <div className="headerContainer">
             <h1>Hur är vädret i...</h1>
           </div>
-          <SearchField addCity={addCity} />
-          <SearchResults cities={cities} deleteCity={deleteCity} />
+          <SearchField error={error} addCity={addCity} />
+          <SearchResults
+            setError={setError}
+            cities={cities}
+            deleteCity={deleteCity}
+          />
         </div>
         <div className="footerContainer container">
           <img className="logo" src={logo} />

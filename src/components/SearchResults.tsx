@@ -1,4 +1,4 @@
-import React, { ReactComponentElement } from "react";
+import React, { ReactComponentElement, useEffect, useState } from "react";
 import { useQueries } from "react-query";
 import CityWeatherBox from "./CityWeatherBox";
 import { CityWeatherData } from "./CityWeatherData";
@@ -6,10 +6,12 @@ import fetchCityWeatherData from "./FetchCityWeatherData";
 import "./SearchResults.css";
 
 const SearchResults = (props: any) => {
+  const [error, setError] = useState("");
   const deleteCity = (index: number): void => {
     console.log(index);
     props.deleteCity(index);
   };
+
   const cityQueries = useQueries(
     props.cities.map((city: string) => {
       return {
@@ -25,7 +27,17 @@ const SearchResults = (props: any) => {
   return (
     <div className="SearchResults">
       {cityQueries
+        .filter((query: any) => {
+          if (query.data) {
+            if (query.data.error) {
+              //setError("Det finns ingen stad som matchar din sökning");
+              return false;
+            }
+          }
+          return true;
+        })
         .sort((a: any, b: any) => {
+          // ignore loading or error queries
           if (a.isLoading || b.isLoading) {
             return 1;
           }

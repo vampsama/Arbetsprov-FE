@@ -1,8 +1,5 @@
 import React from "react";
-import { useQuery } from "react-query";
 import "./CityWeatherBox.css";
-import { CityWeatherData } from "./CityWeatherData";
-import fetchCityWeatherData from "./FetchCityWeatherData";
 import WeatherIcon from "./WeatherIcon";
 
 const getTempClass = (temperature: number, precip: number): string => {
@@ -26,7 +23,7 @@ const CityWeatherBox = (props: any) => {
   };
 
   if (props.cityWeatherDataQuery.isError) {
-    return <span>Error: {props.cityWeatherDataQuery.error.message}</span>;
+    return null;
   }
   if (props.cityWeatherDataQuery.isLoading) {
     return <div className={`CityWeatherBox`}></div>;
