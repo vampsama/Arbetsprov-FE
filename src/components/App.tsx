@@ -8,15 +8,6 @@ import { QueryCache, QueryClient, QueryClientProvider } from "react-query";
 
 const App = () => {
   const queryClient = new QueryClient({
-    queryCache: new QueryCache({
-      onError: (error: any, query) => {
-        console.log(query.queryKey[1]);
-        const newCities = cities.filter((city) => city != query.queryKey[1]);
-        setCities(newCities);
-        setError(error.message);
-      },
-      onSuccess: () => setError(""),
-    }),
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
@@ -27,22 +18,34 @@ const App = () => {
       },
     },
   });
+
   const localStorageCities = localStorage.getItem("cities");
+
   const [cities, setCities] = useState<string[]>(
     localStorageCities ? JSON.parse(localStorageCities) : []
   );
+
   const [error, setError] = useState("");
-  useEffect(
-    () => localStorage.setItem("cities", JSON.stringify(cities)),
-    [cities]
-  );
-  const deleteCity = (index: number) => {
-    let newCities = [...cities];
-    newCities.splice(index, 1);
+
+  const setErrorCity = (city: string): void => {
+    deleteCity(city);
+    setError("Det finns ingen stad som matchar din sökning");
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cities", JSON.stringify(cities));
+    console.log(cities);
+  }, [cities]);
+
+  const deleteCity = (cityToDelete: string): void => {
+    const newCities = cities.filter((city) => city != cityToDelete);
     setCities(newCities);
   };
-  const addCity = (newCity: string) => {
-    const newCities = [...cities, newCity];
+
+  const addCity = (newCity: string): void => {
+    setError("");
+    console.log(cities);
+    const newCities = [...cities, newCity.toLowerCase()];
     setCities(newCities);
   };
   return (
@@ -54,7 +57,7 @@ const App = () => {
           </div>
           <SearchField error={error} addCity={addCity} />
           <SearchResults
-            setError={setError}
+            setError={setErrorCity}
             cities={cities}
             deleteCity={deleteCity}
           />

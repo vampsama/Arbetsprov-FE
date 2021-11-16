@@ -5,19 +5,21 @@ import { CityWeatherData } from "./CityWeatherData";
 import fetchCityWeatherData from "./FetchCityWeatherData";
 import "./SearchResults.css";
 
-const SearchResults = (props: any) => {
-  const [error, setError] = useState("");
-  const deleteCity = (index: number): void => {
-    console.log(index);
-    props.deleteCity(index);
-  };
-
+const SearchResults = ({
+  setError,
+  deleteCity,
+  cities,
+}: {
+  setError: (error: string) => void;
+  deleteCity: (city: string) => void;
+  cities: string[];
+}) => {
   const cityQueries = useQueries(
-    props.cities.map((city: string) => {
+    cities.map((city: string) => {
       return {
         queryKey: ["city", city],
         queryFn: () => {
-          return fetchCityWeatherData(city);
+          return fetchCityWeatherData(city, setError);
         },
       };
     })
