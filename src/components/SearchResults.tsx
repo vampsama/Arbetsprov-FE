@@ -32,7 +32,6 @@ const SearchResults = ({
         .filter((query: any) => {
           if (query.data) {
             if (query.data.error) {
-              //setError("Det finns ingen stad som matchar din sökning");
               return false;
             }
           }
