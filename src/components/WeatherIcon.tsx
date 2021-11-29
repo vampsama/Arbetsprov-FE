@@ -1,10 +1,8 @@
 import React from "react";
 import "./WeatherIcon.css";
 
-const WeatherIcon = (props: any) => {
-  return (
-    <div className={`WeatherIcon ${getWeatherClass(props.weatherCode)}`}></div>
-  );
+const WeatherIcon = ({ weatherCode }: { weatherCode: number }) => {
+  return <div className={`WeatherIcon ${getWeatherClass(weatherCode)}`}></div>;
 };
 
 const getWeatherClass = (weatherCode: number): string => {
